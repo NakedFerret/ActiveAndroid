@@ -28,6 +28,7 @@ import android.provider.BaseColumns;
 public @interface Table {
 
 	public static final String DEFAULT_ID_NAME = BaseColumns._ID;
-	public String name();
+	public static final String DEFAULT_TABLE_NAME = "";
+	public String name() default DEFAULT_TABLE_NAME;
 	public String id() default DEFAULT_ID_NAME;
 }

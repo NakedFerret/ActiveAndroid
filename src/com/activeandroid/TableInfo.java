@@ -50,9 +50,14 @@ public final class TableInfo {
 		mType = type;
 
 		final Table tableAnnotation = type.getAnnotation(Table.class);
-
-        if (tableAnnotation != null) {
-			mTableName = tableAnnotation.name();
+		if (tableAnnotation != null) {
+			
+			// Use class name if no table name was provided
+			if(tableAnnotation.name().equals(Table.DEFAULT_TABLE_NAME))
+				mTableName = type.getSimpleName();
+			else
+				mTableName = tableAnnotation.name();
+			
 			mIdName = tableAnnotation.id();
 		}
 		else {
