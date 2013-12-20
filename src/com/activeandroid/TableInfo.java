@@ -71,17 +71,15 @@ public final class TableInfo {
         List<Field> fields = new LinkedList<Field>(ReflectionUtils.getDeclaredColumnFields(type));
         Collections.reverse(fields);
 
-        for (Field field : fields) {
-            if (field.isAnnotationPresent(Column.class)) {
-                final Column columnAnnotation = field.getAnnotation(Column.class);
-                String columnName = columnAnnotation.name();
-                if (TextUtils.isEmpty(columnName)) {
-                    columnName = field.getName();
-                }
-
-                mColumnNames.put(field, columnName);
-            }
-        }
+		for (Field field : fields) {
+			if (field.isAnnotationPresent(Column.class)) {
+				final Column columnAnnotation = field.getAnnotation(Column.class);
+				String columnName = columnAnnotation.name();
+				if (columnName.equals(Column.DEFAULT_COLUMN_NAME))
+					columnName = field.getName();
+				mColumnNames.put(field, columnName);
+			}
+		}
 
 	}
 

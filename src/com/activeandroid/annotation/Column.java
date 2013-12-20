@@ -31,8 +31,10 @@ public @interface Column {
 	public enum ForeignKeyAction {
 		SET_NULL, SET_DEFAULT, CASCADE, RESTRICT, NO_ACTION
 	}
+	
+	public static final String DEFAULT_COLUMN_NAME = "";
 
-	public String name() default "";
+	public String name() default DEFAULT_COLUMN_NAME;
 
 	public int length() default -1;
 
