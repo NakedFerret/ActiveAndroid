@@ -21,11 +21,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import android.provider.BaseColumns;
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Table {
 
-	public static final String DEFAULT_ID_NAME = "Id";
+	public static final String DEFAULT_ID_NAME = BaseColumns._ID;
 	public String name();
 	public String id() default DEFAULT_ID_NAME;
 }
